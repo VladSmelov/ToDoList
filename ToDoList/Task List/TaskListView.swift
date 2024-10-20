@@ -12,10 +12,43 @@ struct TaskListView: View {
 
     var body: some View {
         ScrollView {
-            ForEach(viewModel.tasks, id: \.id) { task in
-                Text(task.name)
-            }
+            taskList
         }
+    }
+}
+
+// MARK: - Sub Views
+private extension TaskListView {
+    var taskList: some View {
+        ForEach(viewModel.tasks, id: \.id) { task in
+            cell(for: task)
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    func cell(for task: Task) -> some View {
+        VStack {
+            HStack {
+                Text(task.name)
+                Spacer()
+                Text(createReadableDueDate(from: task.dueDate))
+                    .padding(.trailing)
+                Text(task.priority.asString)
+            }
+            .padding()
+
+            Divider()
+                .padding(.horizontal)
+        }
+    }
+}
+
+// MARK: - Helpers
+private extension TaskListView {
+    func createReadableDueDate(from dueDate: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        return dateFormatter.string(from: dueDate)
     }
 }
 

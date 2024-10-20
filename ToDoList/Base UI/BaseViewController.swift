@@ -24,7 +24,6 @@ class BaseViewController<Content: View>: UIViewController, SwiftUIHostingProtoco
     override func viewDidLoad() {
         super.viewDidLoad()
         addHostingController()
-        print("loada")
     }
 
     deinit {
