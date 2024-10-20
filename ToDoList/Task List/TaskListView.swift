@@ -11,35 +11,47 @@ struct TaskListView: View {
     @ObservedObject private(set) var viewModel: TaskListViewModel
 
     var body: some View {
-        ScrollView {
+        BaseNavigationView {
             taskList
+        } toolBar: {
+            ToolbarItem(placement: .primaryAction) {
+                addTaskButton
+            }
+            ToolbarItem(placement: .principal) {
+                Text("To-Do List")
+            }
         }
     }
 }
 
 // MARK: - Sub Views
 private extension TaskListView {
-    var taskList: some View {
-        ForEach(viewModel.tasks, id: \.id) { task in
-            cell(for: task)
+    var addTaskButton: some View {
+        Button {
+            viewModel.run(action: .addTask)
+        } label: {
+            Image(systemName: "plus.circle")
         }
-        .frame(maxWidth: .infinity)
+    }
+
+    var taskList: some View {
+        List {
+            ForEach(viewModel.tasks, id: \.id) { task in
+                cell(for: task)
+            }
+            .onDelete(perform: viewModel.deleteTask)
+        }
     }
 
     func cell(for task: Task) -> some View {
-        VStack {
-            HStack {
-                Text(task.name)
-                Spacer()
-                Text(createReadableDueDate(from: task.dueDate))
-                    .padding(.trailing)
-                Text(task.priority.asString)
-            }
-            .padding()
-
-            Divider()
-                .padding(.horizontal)
+        HStack {
+            Text(task.name)
+            Spacer()
+            Text(createReadableDueDate(from: task.dueDate))
+                .padding(.trailing)
+            Text(task.priority.asString)
         }
+        .padding()
     }
 }
 

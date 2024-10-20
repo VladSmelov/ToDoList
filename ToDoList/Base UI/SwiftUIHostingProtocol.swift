@@ -58,7 +58,7 @@ public extension SwiftUIHostingProtocol {
     func addConstraints() {
         subView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            subView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            subView.topAnchor.constraint(equalTo: view.topAnchor),
             subView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             subView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             subView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
