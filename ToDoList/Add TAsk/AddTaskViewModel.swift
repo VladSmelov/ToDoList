@@ -8,11 +8,11 @@
 import Foundation
 
 class AddTaskViewModel: ObservableObject {
-    @Published private(set) var task: Task
+    @Published private(set) var task: ToDoTask
     @Published private(set) var action: Action?
 
     init() {
-        task = Task(name: "", priority: .low, dueDate: .now)
+        task = ToDoTask(name: "", priority: .low, dueDate: .now)
     }
 }
 

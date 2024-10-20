@@ -8,7 +8,7 @@
 import Foundation
 
 class TaskListViewModel: ObservableObject {
-    @Published var tasks: [Task]
+    @Published var tasks: [ToDoTask]
     @Published private(set) var action: Action?
 
     init() {
@@ -17,6 +17,7 @@ class TaskListViewModel: ObservableObject {
     }
 }
 
+// MARK: - Actions
 extension TaskListViewModel {
     func run(action: Action) {
         self.action = action
@@ -31,13 +32,27 @@ extension TaskListViewModel {
 // MARK: - Data manipulation
 extension TaskListViewModel {
     func fetchTasks() {
-        for index in 0...10 {
-            let newTask = Task(name: "Tast \(index)", priority: .low, dueDate: .now)
+        for _ in 0...10 {
+            let newTask = ToDoTask(
+                name: "\(Int.random(in: 0...100)) Task",
+                priority: .init(rawValue: Int.random(in: 0...2))!,
+                dueDate: .now.addingTimeInterval(TimeInterval.random(in: 0...100) * 24 * 60 * 60))
             tasks.append(newTask)
         }
     }
 
     func deleteTask(at offsets: IndexSet) {
         tasks.remove(atOffsets: offsets)
+    }
+}
+
+// MARK: - Sotring
+extension TaskListViewModel {
+    var allSortingOptions: [ToDoTaskSorter] {
+        ToDoTaskSorter.allCases
+    }
+
+    func sort(by sortingOption: ToDoTaskSorter) {
+        tasks = sortingOption.sort(tasks: tasks)
     }
 }

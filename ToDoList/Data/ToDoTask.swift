@@ -1,5 +1,5 @@
 //
-//  Task.swift
+//  ToDoTask.swift
 //  ToDoList
 //
 //  Created by Vladislav Smelov on 10/20/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Task {
+struct ToDoTask {
     let id: UUID = .init()
     let name: String
     let priority: Priority
@@ -23,9 +23,9 @@ struct Task {
             case .low:
                 return "Low"
             case .medium:
-                return "Medium"
+                return "Med"
             case .hight:
-                return "Hight"
+                return "High"
             }
         }
     }

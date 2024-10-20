@@ -15,8 +15,10 @@
 		1FF592972CC554730050CB70 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592962CC554730050CB70 /* AddTaskViewController.swift */; };
 		1FF592992CC554950050CB70 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592982CC554950050CB70 /* AddTaskView.swift */; };
 		1FF5929B2CC554C60050CB70 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5929A2CC554C60050CB70 /* AddTaskViewModel.swift */; };
-		1FF5929E2CC554DF0050CB70 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5929D2CC554DF0050CB70 /* Task.swift */; };
+		1FF5929E2CC554DF0050CB70 /* ToDoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5929D2CC554DF0050CB70 /* ToDoTask.swift */; };
 		1FF592A02CC55C230050CB70 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5929F2CC55C230050CB70 /* BaseNavigationView.swift */; };
+		1FF592A22CC56DC20050CB70 /* ToDoTaskSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A12CC56DC20050CB70 /* ToDoTaskSorter.swift */; };
+		1FF592A42CC595280050CB70 /* ToDoTaskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A32CC595280050CB70 /* ToDoTaskStorage.swift */; };
 		1FFCBC1D2CC5336400453AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFCBC1C2CC5336400453AD7 /* AppDelegate.swift */; };
 		1FFCBC262CC5336500453AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FFCBC252CC5336500453AD7 /* Assets.xcassets */; };
 		1FFCBC292CC5336500453AD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FFCBC272CC5336500453AD7 /* LaunchScreen.storyboard */; };
@@ -31,8 +33,10 @@
 		1FF592962CC554730050CB70 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		1FF592982CC554950050CB70 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		1FF5929A2CC554C60050CB70 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
-		1FF5929D2CC554DF0050CB70 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		1FF5929D2CC554DF0050CB70 /* ToDoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTask.swift; sourceTree = "<group>"; };
 		1FF5929F2CC55C230050CB70 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
+		1FF592A12CC56DC20050CB70 /* ToDoTaskSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskSorter.swift; sourceTree = "<group>"; };
+		1FF592A32CC595280050CB70 /* ToDoTaskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskStorage.swift; sourceTree = "<group>"; };
 		1FFCBC192CC5336400453AD7 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFCBC1C2CC5336400453AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFCBC252CC5336500453AD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,7 +99,9 @@
 		1FF5929C2CC554D50050CB70 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				1FF5929D2CC554DF0050CB70 /* Task.swift */,
+				1FF5929D2CC554DF0050CB70 /* ToDoTask.swift */,
+				1FF592A12CC56DC20050CB70 /* ToDoTaskSorter.swift */,
+				1FF592A32CC595280050CB70 /* ToDoTaskStorage.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -199,12 +205,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FF592892CC5354B0050CB70 /* BaseViewController.swift in Sources */,
+				1FF592A22CC56DC20050CB70 /* ToDoTaskSorter.swift in Sources */,
 				1FF592A02CC55C230050CB70 /* BaseNavigationView.swift in Sources */,
 				1FF5929B2CC554C60050CB70 /* AddTaskViewModel.swift in Sources */,
-				1FF5929E2CC554DF0050CB70 /* Task.swift in Sources */,
+				1FF5929E2CC554DF0050CB70 /* ToDoTask.swift in Sources */,
 				1FF5928B2CC535DF0050CB70 /* SwiftUIHostingProtocol.swift in Sources */,
 				1FFCBC1D2CC5336400453AD7 /* AppDelegate.swift in Sources */,
 				1FF592992CC554950050CB70 /* AddTaskView.swift in Sources */,
+				1FF592A42CC595280050CB70 /* ToDoTaskStorage.swift in Sources */,
 				1FF592912CC53A0B0050CB70 /* TaskListView.swift in Sources */,
 				1FF5928F2CC539DD0050CB70 /* TaskListViewController.swift in Sources */,
 				1FF592942CC541390050CB70 /* TaskListViewModel.swift in Sources */,

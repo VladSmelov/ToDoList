@@ -8,23 +8,31 @@
 import SwiftUI
 
 struct TaskListView: View {
+    @State private var sortingActionSheetShowed = false
     @ObservedObject private(set) var viewModel: TaskListViewModel
 
     var body: some View {
         BaseNavigationView {
             taskList
         } toolBar: {
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItem(placement: .topBarLeading) {
                 addTaskButton
             }
             ToolbarItem(placement: .principal) {
                 Text("To-Do List")
             }
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                filterButton
+                sortButton
+            }
+        }
+        .actionSheet(isPresented: $sortingActionSheetShowed) {
+            sortingActionSheet
         }
     }
 }
 
-// MARK: - Sub Views
+// MARK: - ToolbarItems
 private extension TaskListView {
     var addTaskButton: some View {
         Button {
@@ -34,24 +42,66 @@ private extension TaskListView {
         }
     }
 
-    var taskList: some View {
-        List {
-            ForEach(viewModel.tasks, id: \.id) { task in
-                cell(for: task)
-            }
-            .onDelete(perform: viewModel.deleteTask)
+    var sortButton: some View {
+        Button {
+            sortingActionSheetShowed.toggle()
+        } label: {
+            Image(systemName: "arrow.up.arrow.down")
         }
     }
 
-    func cell(for task: Task) -> some View {
-        HStack {
-            Text(task.name)
-            Spacer()
-            Text(createReadableDueDate(from: task.dueDate))
-                .padding(.trailing)
-            Text(task.priority.asString)
+    var filterButton: some View {
+        Button {
+            // TODO: filter
+        } label: {
+            Image(systemName: "checkmark")
         }
-        .padding()
+    }
+
+    var sortingActionSheet: ActionSheet {
+        var options = viewModel.allSortingOptions.map { option in
+            ActionSheet.Button
+                .default(Text(option.userFriendlyName)) {
+                    viewModel.sort(by: option)
+                }
+        }
+        options.append(ActionSheet.Button.cancel())
+        return ActionSheet(
+            title: Text("Sorting order"),
+            buttons: options)
+    }
+}
+
+// MARK: - Main content
+private extension TaskListView {
+    var taskList: some View {
+        List {
+            Section {
+                ForEach(viewModel.tasks, id: \.id) { task in
+                    cell(for: task)
+                }
+                .onDelete(perform: viewModel.deleteTask)
+            } header: {
+                Text("All tasks")
+            }
+        }
+    }
+
+    func cell(for task: ToDoTask) -> some View {
+        Button {
+            // TODO: Edit
+        } label: {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(task.name)
+                HStack {
+                    Text(task.priority.asString)
+                    Spacer()
+                    Text(createReadableDueDate(from: task.dueDate))
+                }
+            }
+            .padding(8)
+        }
+        .buttonStyle(.borderless)
     }
 }
 
@@ -59,7 +109,7 @@ private extension TaskListView {
 private extension TaskListView {
     func createReadableDueDate(from dueDate: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
+        dateFormatter.dateStyle = .medium
         return dateFormatter.string(from: dueDate)
     }
 }
