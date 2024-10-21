@@ -8,11 +8,13 @@
 import Foundation
 
 class TaskListViewModel: ObservableObject {
-    @Published var tasks: [ToDoTask]
+    @Published private var tasks: [ToDoTask]
+    @Published var tasksToDisplay: [ToDoTask]
     @Published private(set) var action: Action?
 
     init() {
-        self.tasks = []
+        tasks = []
+        tasksToDisplay = []
         fetchTasks()
     }
 }
@@ -33,7 +35,8 @@ extension TaskListViewModel {
 extension TaskListViewModel {
     func fetchTasks() {
         do {
-            tasks = try ServiceLocator.storage.fetchTasks()
+            let newList = try ServiceLocator.storage.fetchTasks()
+            update(tasks: newList)
         } catch {
             print(error)
         }
@@ -41,13 +44,18 @@ extension TaskListViewModel {
 
     func deleteTask(at offsets: IndexSet) {
         let index = offsets[offsets.startIndex]
-        var deletedTask = tasks[index]
+        let taskToDelete = tasksToDisplay[index]
         do {
-            try ServiceLocator.storage.delete(task: deletedTask)
+            try ServiceLocator.storage.delete(task: taskToDelete)
             fetchTasks()
         } catch {
             print(error)
         }
+    }
+
+    private func update(tasks newTasks: [ToDoTask]) {
+        tasks = newTasks
+        tasksToDisplay = tasks
     }
 }
 
@@ -58,6 +66,17 @@ extension TaskListViewModel {
     }
 
     func sort(by sortingOption: ToDoTaskSorter) {
-        tasks = sortingOption.sort(tasks: tasks)
+        tasksToDisplay = sortingOption.sort(tasks: tasksToDisplay)
+    }
+}
+
+// MARK: - Filtering
+extension TaskListViewModel {
+    var allFilteringOptions: [ToDoTaskFilter] {
+        ToDoTaskFilter.allCases
+    }
+
+    func filter(by filteringOption: ToDoTaskFilter) {
+        tasksToDisplay = filteringOption.filter(tasks: tasks)
     }
 }

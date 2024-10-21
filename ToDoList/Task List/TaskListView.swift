@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct TaskListView: View {
-    @State private var sortingActionSheetShowed = false
+    private enum ActionSheetOptions {
+        case sort
+        case filter
+    }
+    @State private var actionSheetPresented: Bool = false
+    @State private var actionSheetOption: ActionSheetOptions = .sort
+
     @ObservedObject private(set) var viewModel: TaskListViewModel
 
     var body: some View {
@@ -26,8 +32,13 @@ struct TaskListView: View {
                 sortButton
             }
         }
-        .actionSheet(isPresented: $sortingActionSheetShowed) {
-            sortingActionSheet
+        .actionSheet(isPresented: $actionSheetPresented) {
+            switch actionSheetOption {
+            case .sort:
+                return sortingActionSheet
+            case .filter:
+                return filteringActionSheet
+            }
         }
     }
 }
@@ -44,17 +55,10 @@ private extension TaskListView {
 
     var sortButton: some View {
         Button {
-            sortingActionSheetShowed.toggle()
+            actionSheetOption = .sort
+            actionSheetPresented.toggle()
         } label: {
             Image(systemName: "arrow.up.arrow.down")
-        }
-    }
-
-    var filterButton: some View {
-        Button {
-            // TODO: filter
-        } label: {
-            Image(systemName: "checkmark")
         }
     }
 
@@ -70,6 +74,28 @@ private extension TaskListView {
             title: Text("Sorting order"),
             buttons: options)
     }
+
+    var filterButton: some View {
+        Button {
+            actionSheetOption = .filter
+            actionSheetPresented.toggle()
+        } label: {
+            Image(systemName: "checkmark")
+        }
+    }
+
+    var filteringActionSheet: ActionSheet {
+        var options = viewModel.allFilteringOptions.map { option in
+            ActionSheet.Button
+                .default(Text(option.userFriendlyName)) {
+                    viewModel.filter(by: option)
+                }
+        }
+        options.append(ActionSheet.Button.cancel())
+        return ActionSheet(
+            title: Text("Sorting order"),
+            buttons: options)
+    }
 }
 
 // MARK: - Main content
@@ -77,7 +103,7 @@ private extension TaskListView {
     var taskList: some View {
         List {
             Section {
-                ForEach(viewModel.tasks, id: \.id) { task in
+                ForEach(viewModel.tasksToDisplay, id: \.id) { task in
                     cell(for: task)
                 }
                 .onDelete(perform: viewModel.deleteTask)
