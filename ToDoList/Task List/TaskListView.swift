@@ -40,6 +40,9 @@ struct TaskListView: View {
                 return filteringActionSheet
             }
         }
+        .onAppear {
+            viewModel.fetchTasks()
+        }
     }
 }
 
@@ -115,28 +118,19 @@ private extension TaskListView {
 
     func cell(for task: ToDoTask) -> some View {
         Button {
-            // TODO: Edit
+            viewModel.run(action: .view(task: task))
         } label: {
             VStack(alignment: .leading, spacing: 8) {
                 Text(task.name)
                 HStack {
-                    Text(task.priority.asString)
+                    Text(task.priority.userFriendlyName)
                     Spacer()
-                    Text(createReadableDueDate(from: task.dueDate))
+                    Text(task.userFriendlyDueDate)
                 }
             }
             .padding(8)
         }
         .buttonStyle(.borderless)
-    }
-}
-
-// MARK: - Helpers
-private extension TaskListView {
-    func createReadableDueDate(from dueDate: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        return dateFormatter.string(from: dueDate)
     }
 }
 

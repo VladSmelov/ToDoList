@@ -35,7 +35,9 @@ private extension TaskListViewController {
         switch action {
         case .addTask:
             navigateToAddTask()
-        default:
+        case .view(let task):
+            navigateToView(task: task)
+        case .none:
             break
         }
     }
@@ -44,7 +46,12 @@ private extension TaskListViewController {
 // MARK: - Navigation
 private extension TaskListViewController {
     func navigateToAddTask() {
-        let addTaskViewController = AddTaskViewController()
+        let addTaskViewController = TaskContentViewController.addNew()
         navigationController?.pushViewController(addTaskViewController, animated: true)
+    }
+
+    func navigateToView(task: ToDoTask) {
+        let viewTaskViewController = TaskContentViewController.init(view: task)
+        navigationController?.pushViewController(viewTaskViewController, animated: true)
     }
 }

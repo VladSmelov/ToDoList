@@ -52,6 +52,7 @@ final class ToDoTaskStorage: ToDoTaskStorageProtocol {
 // MARK: - Helpers
 private extension ToDoTaskStorage {
     func generateTasks() -> [ToDoTask] {
+        // TODO: read data from storage
         var result = [ToDoTask]()
         let numberOfTasks = Int.random(in: 10...20)
         for _ in 0...numberOfTasks {
@@ -69,16 +70,3 @@ private extension ToDoTaskStorage {
     }
 }
 
-enum ToDoTaskStorageErrors: Error {
-    case noTaskInStorage(ToDoTask)
-    case emptyStorage
-
-    var localizedDescription: String {
-        switch self {
-        case .noTaskInStorage(let toDoTask):
-            return "Wrong task ID: \(toDoTask.id)"
-        case .emptyStorage:
-            return "Storage is empty"
-        }
-    }
-}

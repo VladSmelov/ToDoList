@@ -1,5 +1,5 @@
 //
-//  AddTaskViewController.swift
+//  TaskContentViewController.swift
 //  ToDoList
 //
 //  Created by Vladislav Smelov on 10/20/24.
@@ -8,21 +8,36 @@
 import Combine
 import UIKit
 
-class AddTaskViewController: BaseViewController<AddTaskView> {
-    private let addTaskViewModel: AddTaskViewModel
+class TaskContentViewController: BaseViewController<TaskContentView> {
+    private let taskContentViewModel: TaskContentViewModel
     private var cancellableStorage: Set<AnyCancellable> = .init()
 
-    init() {
-        addTaskViewModel = .init()
-        super.init(content: AddTaskView(viewModel: addTaskViewModel))
+    private init(taskContentViewModel: TaskContentViewModel) {
+        self.taskContentViewModel = taskContentViewModel
+        super.init(content: TaskContentView(viewModel: taskContentViewModel))
         subscribeOnModalActions()
+    }
+
+    convenience init(view task: ToDoTask) {
+        let viewModel = TaskContentViewModel(viewMode: .view(task: task))
+        self.init(taskContentViewModel: viewModel)
+    }
+
+    convenience init(edit task: ToDoTask) {
+        let viewModel = TaskContentViewModel(viewMode: .edit(task: task))
+        self.init(taskContentViewModel: viewModel)
+    }
+
+    static func addNew() -> TaskContentViewController {
+        let viewModel = TaskContentViewModel(viewMode: .addTask)
+        return TaskContentViewController(taskContentViewModel: viewModel)
     }
 }
 
 // MARK: - Action Handling
-private extension AddTaskViewController {
+private extension TaskContentViewController {
     func subscribeOnModalActions() {
-        addTaskViewModel
+        taskContentViewModel
             .$action
             .receive(on: RunLoop.main)
             .sink { [weak self] newAction in
@@ -31,7 +46,7 @@ private extension AddTaskViewController {
             .store(in: &cancellableStorage)
     }
 
-    func handle(action: AddTaskViewModel.Action?) {
+    func handle(action: TaskContentViewModel.Action?) {
         switch action {
         case .goBack:
             navigateBack()
@@ -42,7 +57,7 @@ private extension AddTaskViewController {
 }
 
 // MARK: - Navigation
-private extension AddTaskViewController {
+private extension TaskContentViewController {
     func navigateBack() {
         navigationController?.popViewController(animated: true)
     }

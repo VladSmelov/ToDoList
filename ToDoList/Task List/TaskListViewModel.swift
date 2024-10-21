@@ -15,7 +15,6 @@ class TaskListViewModel: ObservableObject {
     init() {
         tasks = []
         tasksToDisplay = []
-        fetchTasks()
     }
 }
 
@@ -23,11 +22,11 @@ class TaskListViewModel: ObservableObject {
 extension TaskListViewModel {
     func run(action: Action) {
         self.action = action
-        self.action = nil
     }
 
     enum Action {
         case addTask
+        case view(task: ToDoTask)
     }
 }
 
@@ -64,7 +63,7 @@ extension TaskListViewModel {
     var allSortingOptions: [ToDoTaskSorter] {
         ToDoTaskSorter.allCases
     }
-
+    // TODO: Make private, call with using Action
     func sort(by sortingOption: ToDoTaskSorter) {
         tasksToDisplay = sortingOption.sort(tasks: tasksToDisplay)
     }
@@ -75,7 +74,7 @@ extension TaskListViewModel {
     var allFilteringOptions: [ToDoTaskFilter] {
         ToDoTaskFilter.allCases
     }
-
+    // TODO: Make private, call with using Action
     func filter(by filteringOption: ToDoTaskFilter) {
         tasksToDisplay = filteringOption.filter(tasks: tasks)
     }

@@ -33,7 +33,7 @@ enum ToDoTaskFilter: CaseIterable {
         var result = ""
         switch self {
         case .priority(let priority):
-            result = "Show \(priority.asString)"
+            result = "Show \(priority.userFriendlyName)"
         case .none:
             result = "Show All"
         }

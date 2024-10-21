@@ -9,4 +9,5 @@ import Foundation
 
 final class ServiceLocator {
     static let storage: ToDoTaskStorageProtocol = ToDoTaskStorage()
+    static let dataValidator: DataValidatorProtocol = DataValidator()
 }

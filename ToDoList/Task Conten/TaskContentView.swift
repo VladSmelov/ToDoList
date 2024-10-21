@@ -1,5 +1,5 @@
 //
-//  AddTaskView.swift
+//  TaskContentView.swift
 //  ToDoList
 //
 //  Created by Vladislav Smelov on 10/20/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct AddTaskView: View {
-    @ObservedObject private(set) var viewModel: AddTaskViewModel
+struct TaskContentView: View {
+    @ObservedObject private(set) var viewModel: TaskContentViewModel
 
     var body: some View {
         BaseNavigationView {
-            Text("Add task here")
+            mainContent
         } toolBar: {
             ToolbarItem(placement: .navigation) {
                 backArrow
@@ -20,12 +20,17 @@ struct AddTaskView: View {
             ToolbarItem(placement: .principal) {
                 Text("To-Do List")
             }
+            if case .view(_) = viewModel.viewMode {
+                ToolbarItem(placement: .topBarTrailing) {
+                    editButton
+                }
+            }
         }
     }
 }
 
 // MARK: - Sub Views
-private extension AddTaskView {
+private extension TaskContentView {
     var backArrow: some View {
         Button {
             viewModel.run(action: .goBack)
@@ -34,9 +39,113 @@ private extension AddTaskView {
         }
     }
 
+    var editButton: some View {
+        Button {
+            viewModel.run(action: .edit)
+        } label: {
+            Image(systemName: "pencil.line")
+        }
+    }
 
+    @ViewBuilder
+    var mainContent: some View {
+        switch viewModel.viewMode {
+        case .view:
+            viewTaskDetails
+        case .edit, .addTask:
+            editTaskDetails
+        }
+    }
+}
+
+private extension TaskContentView {
+    var viewTaskDetails: some View {
+        List {
+            Section {
+                Text(viewModel.task.name)
+                    .padding(.vertical, 8)
+            } header: {
+                Text("Name")
+            }
+
+            Section {
+                Text(viewModel.task.userFriendlyDueDate)
+                    .padding(.vertical, 8)
+            } header: {
+                Text("Due date")
+            }
+
+            Section {
+                Text(viewModel.task.priority.userFriendlyName)
+                    .padding(.vertical, 8)
+            } header: {
+                Text("Priority")
+            }
+        }
+    }
+
+    var editTaskDetails: some View {
+        List {
+            Section {
+                TextField(
+                    text: $viewModel.task.name,
+                    prompt: Text("Enter Task name")
+                ) { }
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .labelsHidden()
+                    .padding(.vertical, 8)
+            } header: {
+                Text("Name")
+            }
+
+            Section {
+                DatePicker(
+                    selection: $viewModel.task.dueDate,
+                    in: Date.now...,
+                    displayedComponents: .date
+                ) { }
+                    .labelsHidden()
+                    .padding(.vertical, 8)
+            } header: {
+                Text("Due date")
+            }
+
+            Section {
+                Picker("", selection: $viewModel.task.priority) {
+                    ForEach(ToDoTask.Priority.allCases, id: \.rawValue) {
+                        Text($0.userFriendlyName)
+                            .tag($0)
+                    }
+                }
+                .labelsHidden()
+                .padding(.vertical, 8)
+            } header: {
+                Text("Priority")
+            }
+
+            Button {
+                viewModel.run(action: .saveChanges)
+            } label: {
+                Text("Save")
+                    .padding(.vertical, 8)
+            }
+            .clipShape(Capsule())
+            
+            showErrorLabel()
+        }
+    }
+    
+    @ViewBuilder
+    func showErrorLabel() -> some View {
+        if let errorText = viewModel.errorText {
+            Text(errorText)
+                .foregroundColor(.red)
+                .padding(.vertical, 8)
+        }
+    }
 }
 
 #Preview {
-    AddTaskView(viewModel: .init())
+    let toDoTask = ToDoTask(name: "ToDoTask", priority: .medium, dueDate: .now)
+    return TaskContentView(viewModel: .init(viewMode: .view(task: toDoTask)))
 }

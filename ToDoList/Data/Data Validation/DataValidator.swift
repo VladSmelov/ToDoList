@@ -7,28 +7,11 @@
 
 import Foundation
 
-enum DataValidatorErrors: Error {
-    case emptyName
-    case nameIsTooLong
-    case unknownPriority
-
-    var localizedDescription: String {
-        switch self {
-        case .emptyName:
-            return "Empty name"
-        case .nameIsTooLong:
-            return "Name is too long, 24 characters max"
-        case .unknownPriority:
-            return "Unknown priority"
-        }
-    }
-}
-
 protocol DataValidatorProtocol {
     func validate(task: ToDoTask) throws
 }
 
-final class DataValidator {
+final class DataValidator: DataValidatorProtocol {
     func validate(task: ToDoTask) throws {
         try validate(name: task.name)
         try validate(priority: task.priority)
