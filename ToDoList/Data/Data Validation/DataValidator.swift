@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol DataValidatorProtocol {
-    func validate(task: ToDoTask) throws
-}
-
 final class DataValidator: DataValidatorProtocol {
     func validate(task: ToDoTask) throws {
         try validate(name: task.name)

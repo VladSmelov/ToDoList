@@ -52,7 +52,7 @@ private extension TaskListView {
         Button {
             viewModel.run(action: .addTask)
         } label: {
-            Image(systemName: "plus.circle")
+            Image(systemName: "plus")
         }
     }
 

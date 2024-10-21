@@ -7,13 +7,6 @@
 
 import Foundation
 
-protocol ToDoTaskStorageProtocol {
-    func fetchTasks() throws -> [ToDoTask]
-    func add(task: ToDoTask) throws
-    func update(task: ToDoTask) throws
-    func delete(task: ToDoTask) throws
-}
-
 final class ToDoTaskStorage: ToDoTaskStorageProtocol {
     private var tasks: [ToDoTask] = []
 
@@ -66,7 +59,7 @@ private extension ToDoTaskStorage {
     }
 
     func validate(task: ToDoTask) throws {
-        try ServiceLocator.dataValidator.validate(task: task)
+        try ServiceLocator.shared.dataValidator.validate(task: task)
     }
 }
 

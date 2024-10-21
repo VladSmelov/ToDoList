@@ -101,7 +101,7 @@ private extension TaskContentView {
             Section {
                 DatePicker(
                     selection: $viewModel.task.dueDate,
-                    in: Date.now...,
+                    in: viewModel.task.dueDate...,
                     displayedComponents: .date
                 ) { }
                     .labelsHidden()

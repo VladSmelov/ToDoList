@@ -11,6 +11,7 @@ class TaskListViewModel: ObservableObject {
     @Published private var tasks: [ToDoTask]
     @Published var tasksToDisplay: [ToDoTask]
     @Published private(set) var action: Action?
+    private(set) var errorText: String?
 
     init() {
         tasks = []
@@ -34,10 +35,10 @@ extension TaskListViewModel {
 extension TaskListViewModel {
     func fetchTasks() {
         do {
-            let newList = try ServiceLocator.storage.fetchTasks()
+            let newList = try ServiceLocator.shared.storage.fetchTasks()
             update(tasks: newList)
         } catch {
-            print(error)
+            errorText = error.localizedDescription
         }
     }
 
@@ -45,10 +46,10 @@ extension TaskListViewModel {
         let index = offsets[offsets.startIndex]
         let taskToDelete = tasksToDisplay[index]
         do {
-            try ServiceLocator.storage.delete(task: taskToDelete)
+            try ServiceLocator.shared.storage.delete(task: taskToDelete)
             fetchTasks()
         } catch {
-            print(error)
+            errorText = error.localizedDescription
         }
     }
 

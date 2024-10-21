@@ -11,7 +11,7 @@ class TaskContentViewModel: ObservableObject {
     @Published var viewMode: ViewMode
     @Published var task: ToDoTask
     @Published private(set) var action: Action?
-    @Published var errorText: String?
+    @Published private(set) var errorText: String?
 
     init(viewMode: ViewMode) {
         self.viewMode = viewMode
@@ -61,9 +61,9 @@ private extension TaskContentViewModel {
         do {
             switch viewMode {
             case .addTask:
-                try ServiceLocator.storage.add(task: task)
+                try ServiceLocator.shared.storage.add(task: task)
             case .edit:
-                try ServiceLocator.storage.update(task: task)
+                try ServiceLocator.shared.storage.update(task: task)
             default:
                 break
             }
