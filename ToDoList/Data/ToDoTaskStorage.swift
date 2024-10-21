@@ -8,32 +8,50 @@
 import Foundation
 
 protocol ToDoTaskStorageProtocol {
-    func fetchTasks() -> [ToDoTask]
-    func add(task: ToDoTask) -> Result<Bool, Error>
-    func update(task: ToDoTask) -> Result<Bool, Error>
-    func delete(task: ToDoTask) -> Result<Bool, Error>
+    func fetchTasks() throws -> [ToDoTask]
+    func add(task: ToDoTask) throws
+    func update(task: ToDoTask) throws
+    func delete(task: ToDoTask) throws
 }
 
 final class ToDoTaskStorage: ToDoTaskStorageProtocol {
-    var tasks: [ToDoTask] = []
+    private var tasks: [ToDoTask] = []
 
-    func fetchTasks() -> [ToDoTask] {
-
+    init() {
+        tasks = generateTasks()
     }
 
-    func add(task: ToDoTask) -> Result<Bool, Error> {
-        <#code#>
+    func fetchTasks() throws -> [ToDoTask] {
+        guard !tasks.isEmpty else {
+            throw ToDoTaskStorageErrors.emptyStorage
+        }
+        return tasks
     }
 
-    func update(task: ToDoTask) -> Result<Bool, Error> {
-        <#code#>
+    func add(task: ToDoTask) throws {
+        try validate(task: task)
+        tasks.append(task)
     }
 
-    func delete(task: ToDoTask) -> Result<Bool, Error> {
-        <#code#>
+    func update(task: ToDoTask) throws {
+        try validate(task: task)
+        guard let index = tasks.firstIndex(of: task) else {
+            throw ToDoTaskStorageErrors.noTaskInStorage(task)
+        }
+        tasks[index] = task
     }
 
-    private func generateTasks() -> [ToDoTask] {
+    func delete(task: ToDoTask) throws {
+        guard let index = tasks.firstIndex(of: task) else {
+            throw ToDoTaskStorageErrors.noTaskInStorage(task)
+        }
+        tasks.remove(at: index)
+    }
+}
+
+// MARK: - Helpers
+private extension ToDoTaskStorage {
+    func generateTasks() -> [ToDoTask] {
         var result = [ToDoTask]()
         let numberOfTasks = Int.random(in: 10...20)
         for _ in 0...numberOfTasks {
@@ -45,4 +63,21 @@ final class ToDoTaskStorage: ToDoTaskStorageProtocol {
         }
         return result
     }
+
+    func validate(task: ToDoTask) throws {
+        guard
+            !task.name.isEmpty,
+            task.dueDate != .now,
+            0 <= task.priority.rawValue,
+            task.priority.rawValue <= 2
+        else {
+            throw ToDoTaskStorageErrors.invalidDataInTask(task)
+        }
+    }
+}
+
+enum ToDoTaskStorageErrors: Error {
+    case noTaskInStorage(ToDoTask)
+    case emptyStorage
+    case invalidDataInTask(ToDoTask)
 }

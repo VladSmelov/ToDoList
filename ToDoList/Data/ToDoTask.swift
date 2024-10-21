@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ToDoTask {
+struct ToDoTask: Equatable {
     let id: UUID = .init()
     let name: String
     let priority: Priority
@@ -28,5 +28,9 @@ struct ToDoTask {
                 return "High"
             }
         }
+    }
+
+    static func == (lhs: ToDoTask, rhs: ToDoTask) -> Bool {
+        lhs.id == rhs.id
     }
 }

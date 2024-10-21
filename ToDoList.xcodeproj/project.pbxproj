@@ -19,6 +19,7 @@
 		1FF592A02CC55C230050CB70 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5929F2CC55C230050CB70 /* BaseNavigationView.swift */; };
 		1FF592A22CC56DC20050CB70 /* ToDoTaskSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A12CC56DC20050CB70 /* ToDoTaskSorter.swift */; };
 		1FF592A42CC595280050CB70 /* ToDoTaskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A32CC595280050CB70 /* ToDoTaskStorage.swift */; };
+		1FF592A62CC59BE20050CB70 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A52CC59BE20050CB70 /* ServiceLocator.swift */; };
 		1FFCBC1D2CC5336400453AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFCBC1C2CC5336400453AD7 /* AppDelegate.swift */; };
 		1FFCBC262CC5336500453AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FFCBC252CC5336500453AD7 /* Assets.xcassets */; };
 		1FFCBC292CC5336500453AD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FFCBC272CC5336500453AD7 /* LaunchScreen.storyboard */; };
@@ -37,6 +38,7 @@
 		1FF5929F2CC55C230050CB70 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		1FF592A12CC56DC20050CB70 /* ToDoTaskSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskSorter.swift; sourceTree = "<group>"; };
 		1FF592A32CC595280050CB70 /* ToDoTaskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskStorage.swift; sourceTree = "<group>"; };
+		1FF592A52CC59BE20050CB70 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		1FFCBC192CC5336400453AD7 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFCBC1C2CC5336400453AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFCBC252CC5336500453AD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -125,10 +127,11 @@
 		1FFCBC1B2CC5336400453AD7 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				1FF5929C2CC554D50050CB70 /* Data */,
+				1FF592A52CC59BE20050CB70 /* ServiceLocator.swift */,
 				1FF5928D2CC539BC0050CB70 /* Base UI */,
 				1FF5928C2CC537060050CB70 /* Task List */,
 				1FF592952CC5545D0050CB70 /* Add TAsk */,
+				1FF5929C2CC554D50050CB70 /* Data */,
 				1FF592922CC53FD00050CB70 /* Others */,
 			);
 			path = ToDoList;
@@ -210,6 +213,7 @@
 				1FF5929B2CC554C60050CB70 /* AddTaskViewModel.swift in Sources */,
 				1FF5929E2CC554DF0050CB70 /* ToDoTask.swift in Sources */,
 				1FF5928B2CC535DF0050CB70 /* SwiftUIHostingProtocol.swift in Sources */,
+				1FF592A62CC59BE20050CB70 /* ServiceLocator.swift in Sources */,
 				1FFCBC1D2CC5336400453AD7 /* AppDelegate.swift in Sources */,
 				1FF592992CC554950050CB70 /* AddTaskView.swift in Sources */,
 				1FF592A42CC595280050CB70 /* ToDoTaskStorage.swift in Sources */,

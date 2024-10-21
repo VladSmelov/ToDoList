@@ -32,17 +32,22 @@ extension TaskListViewModel {
 // MARK: - Data manipulation
 extension TaskListViewModel {
     func fetchTasks() {
-        for _ in 0...10 {
-            let newTask = ToDoTask(
-                name: "\(Int.random(in: 0...100)) Task",
-                priority: .init(rawValue: Int.random(in: 0...2))!,
-                dueDate: .now.addingTimeInterval(TimeInterval.random(in: 0...100) * 24 * 60 * 60))
-            tasks.append(newTask)
+        do {
+            tasks = try ServiceLocator.storage.fetchTasks()
+        } catch {
+            print(error)
         }
     }
 
     func deleteTask(at offsets: IndexSet) {
-        tasks.remove(atOffsets: offsets)
+        let index = offsets[offsets.startIndex]
+        var deletedTask = tasks[index]
+        do {
+            try ServiceLocator.storage.delete(task: deletedTask)
+            fetchTasks()
+        } catch {
+            print(error)
+        }
     }
 }
 

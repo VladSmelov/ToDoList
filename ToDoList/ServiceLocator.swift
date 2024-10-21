@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+final class ServiceLocator {
+    static let storage: ToDoTaskStorageProtocol = ToDoTaskStorage()
+}
