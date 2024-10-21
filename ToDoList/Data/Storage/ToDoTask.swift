@@ -9,16 +9,18 @@ import Foundation
 
 struct ToDoTask: Equatable {
     let id: UUID = .init()
-    let name: String
-    let priority: Priority
-    let dueDate: Date
+    var name: String
+    var priority: Priority
+    var dueDate: Date
 
-    enum Priority: Int {
+    enum Priority: Int, CaseIterable {
         case low
         case medium
         case hight
+        /// Dummy Priority, designed to be able to throw errors during task data validation
+        case unknown
 
-        var asString: String {
+        var userFriendlyName: String {
             switch self {
             case .low:
                 return "Low"
@@ -26,8 +28,16 @@ struct ToDoTask: Equatable {
                 return "Med"
             case .hight:
                 return "High"
+            case .unknown:
+                return "Unknown"
             }
         }
+    }
+    
+    var userFriendlyDueDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        return dateFormatter.string(from: dueDate)
     }
 
     static func == (lhs: ToDoTask, rhs: ToDoTask) -> Bool {

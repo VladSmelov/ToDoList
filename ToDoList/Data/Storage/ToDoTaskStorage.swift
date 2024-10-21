@@ -65,19 +65,20 @@ private extension ToDoTaskStorage {
     }
 
     func validate(task: ToDoTask) throws {
-        guard
-            !task.name.isEmpty,
-            task.dueDate != .now,
-            0 <= task.priority.rawValue,
-            task.priority.rawValue <= 2
-        else {
-            throw ToDoTaskStorageErrors.invalidDataInTask(task)
-        }
+        try ServiceLocator.dataValidator.validate(task: task)
     }
 }
 
 enum ToDoTaskStorageErrors: Error {
     case noTaskInStorage(ToDoTask)
     case emptyStorage
-    case invalidDataInTask(ToDoTask)
+
+    var localizedDescription: String {
+        switch self {
+        case .noTaskInStorage(let toDoTask):
+            return "Wrong task ID: \(toDoTask.id)"
+        case .emptyStorage:
+            return "Storage is empty"
+        }
+    }
 }
