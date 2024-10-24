@@ -27,8 +27,12 @@ final class LocalNotificationsStorage: LocalNotificationsStorageProtocol {
 
     func update(for task: ToDoTask) throws {
         try checkPermissionsIfNeeded()
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [ task.id.uuidString])
+        try delete(for: task)
         try schedule(from: task)
+    }
+
+    func delete(for task: ToDoTask) throws {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [ task.id.uuidString])
     }
 
     private func checkPermissionsIfNeeded() throws {

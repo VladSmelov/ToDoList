@@ -18,4 +18,9 @@ final class MockLocalNotificationsStorage: LocalNotificationsStorageProtocol {
     func update(for task: ToDoTask) throws {
         updatedTask = task
     }
+
+    var deleteTask: ToDoTask?
+    func delete(for task: ToDoTask) throws {
+        deleteTask = task
+    }
 }

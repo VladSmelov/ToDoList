@@ -16,5 +16,6 @@ final class DeleteTaskUseCase {
 
     func execute() throws {
         try ServiceLocator.shared.storage.delete(task: taskToDelete)
+        try ServiceLocator.shared.localNotificationsStorage.delete(for: taskToDelete)
     }
 }
