@@ -37,8 +37,8 @@ extension TaskListViewModel {
     enum Action {
         case addTask
         case view(task: ToDoTask)
-        case sortBy(_ sortingOption: ToDoTaskSorter)
-        case filterBy(_ filteringOption: ToDoTaskFilter)
+        case sortBy(_ sortingOption: ToDoTaskSortingOption)
+        case filterBy(_ filteringOption: ToDoTaskFilteringOption)
     }
 }
 
@@ -72,22 +72,24 @@ extension TaskListViewModel {
 
 // MARK: - Sotring
 extension TaskListViewModel {
-    var allSortingOptions: [ToDoTaskSorter] {
-        ToDoTaskSorter.allCases
+    var allSortingOptions: [ToDoTaskSortingOption] {
+        ToDoTaskSortingOption.allCases
     }
 
-    private func sort(by sortingOption: ToDoTaskSorter) {
-        tasksToDisplay = sortingOption.sort(tasks: tasksToDisplay)
+    private func sort(by sortingOption: ToDoTaskSortingOption) {
+        let sortingUseCase = SortTasksUseCase(tasks: tasks, sortingOption: sortingOption)
+        tasksToDisplay = sortingUseCase.execute()
     }
 }
 
 // MARK: - Filtering
 extension TaskListViewModel {
-    var allFilteringOptions: [ToDoTaskFilter] {
-        ToDoTaskFilter.allCases
+    var allFilteringOptions: [ToDoTaskFilteringOption] {
+        ToDoTaskFilteringOption.allCases
     }
 
-    private func filter(by filteringOption: ToDoTaskFilter) {
-        tasksToDisplay = filteringOption.filter(tasks: tasks)
+    private func filter(by filteringOption: ToDoTaskFilteringOption) {
+        let filteringUseCase = FilterTasksUseCase(tasks: tasks, filteringOption: filteringOption)
+        tasksToDisplay = filteringUseCase.execute()
     }
 }

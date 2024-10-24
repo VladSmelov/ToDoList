@@ -37,7 +37,7 @@ private extension TaskListViewController {
             navigateToAddTask()
         case .view(let task):
             navigateToView(task: task)
-        case .none:
+        default:
             break
         }
     }

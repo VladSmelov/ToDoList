@@ -13,6 +13,9 @@
 		1F7F30962CC6D39100C2B23F /* MockedToDoTaskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F30952CC6D39100C2B23F /* MockedToDoTaskStorage.swift */; };
 		1F7F30982CC6D3CD00C2B23F /* MockDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F30972CC6D3CD00C2B23F /* MockDataValidator.swift */; };
 		1F7F309D2CC6E30E00C2B23F /* ToDoTaskStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F309C2CC6E30E00C2B23F /* ToDoTaskStorageTests.swift */; };
+		1FE519B22CCA587F001D3E67 /* SortTasksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519B12CCA587F001D3E67 /* SortTasksUseCase.swift */; };
+		1FE519B72CCA64E2001D3E67 /* UserPreferenciesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519B62CCA64E2001D3E67 /* UserPreferenciesStorage.swift */; };
+		1FE519B92CCA6A17001D3E67 /* FilterTasksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519B82CCA6A17001D3E67 /* FilterTasksUseCase.swift */; };
 		1FF592892CC5354B0050CB70 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592882CC5354B0050CB70 /* BaseViewController.swift */; };
 		1FF5928B2CC535DF0050CB70 /* SwiftUIHostingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5928A2CC535DF0050CB70 /* SwiftUIHostingProtocol.swift */; };
 		1FF5928F2CC539DD0050CB70 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5928E2CC539DD0050CB70 /* TaskListViewController.swift */; };
@@ -23,10 +26,10 @@
 		1FF5929B2CC554C60050CB70 /* TaskContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5929A2CC554C60050CB70 /* TaskContentViewModel.swift */; };
 		1FF5929E2CC554DF0050CB70 /* ToDoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5929D2CC554DF0050CB70 /* ToDoTask.swift */; };
 		1FF592A02CC55C230050CB70 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5929F2CC55C230050CB70 /* BaseNavigationView.swift */; };
-		1FF592A22CC56DC20050CB70 /* ToDoTaskSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A12CC56DC20050CB70 /* ToDoTaskSorter.swift */; };
+		1FF592A22CC56DC20050CB70 /* ToDoTaskSortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A12CC56DC20050CB70 /* ToDoTaskSortingOption.swift */; };
 		1FF592A42CC595280050CB70 /* ToDoTaskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A32CC595280050CB70 /* ToDoTaskStorage.swift */; };
 		1FF592A62CC59BE20050CB70 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A52CC59BE20050CB70 /* ServiceLocator.swift */; };
-		1FF592A82CC658510050CB70 /* ToDoTaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A72CC658510050CB70 /* ToDoTaskFilter.swift */; };
+		1FF592A82CC658510050CB70 /* ToDoTaskFilteringOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592A72CC658510050CB70 /* ToDoTaskFilteringOption.swift */; };
 		1FF592AB2CC679CB0050CB70 /* DataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592AA2CC679CB0050CB70 /* DataValidator.swift */; };
 		1FF592AE2CC67CE00050CB70 /* DataValidatorErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592AD2CC67CE00050CB70 /* DataValidatorErrors.swift */; };
 		1FF592B12CC67E5A0050CB70 /* ToDoTaskStorageErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592B02CC67E5A0050CB70 /* ToDoTaskStorageErrors.swift */; };
@@ -53,6 +56,9 @@
 		1F7F30952CC6D39100C2B23F /* MockedToDoTaskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedToDoTaskStorage.swift; sourceTree = "<group>"; };
 		1F7F30972CC6D3CD00C2B23F /* MockDataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataValidator.swift; sourceTree = "<group>"; };
 		1F7F309C2CC6E30E00C2B23F /* ToDoTaskStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskStorageTests.swift; sourceTree = "<group>"; };
+		1FE519B12CCA587F001D3E67 /* SortTasksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SortTasksUseCase.swift; path = ToDoListTests/SortTasksUseCase.swift; sourceTree = SOURCE_ROOT; };
+		1FE519B62CCA64E2001D3E67 /* UserPreferenciesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPreferenciesStorage.swift; path = ToDoListTests/UserPreferenciesStorage.swift; sourceTree = SOURCE_ROOT; };
+		1FE519B82CCA6A17001D3E67 /* FilterTasksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTasksUseCase.swift; sourceTree = "<group>"; };
 		1FF592882CC5354B0050CB70 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1FF5928A2CC535DF0050CB70 /* SwiftUIHostingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHostingProtocol.swift; sourceTree = "<group>"; };
 		1FF5928E2CC539DD0050CB70 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
@@ -63,10 +69,10 @@
 		1FF5929A2CC554C60050CB70 /* TaskContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskContentViewModel.swift; sourceTree = "<group>"; };
 		1FF5929D2CC554DF0050CB70 /* ToDoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTask.swift; sourceTree = "<group>"; };
 		1FF5929F2CC55C230050CB70 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
-		1FF592A12CC56DC20050CB70 /* ToDoTaskSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskSorter.swift; sourceTree = "<group>"; };
+		1FF592A12CC56DC20050CB70 /* ToDoTaskSortingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskSortingOption.swift; sourceTree = "<group>"; };
 		1FF592A32CC595280050CB70 /* ToDoTaskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskStorage.swift; sourceTree = "<group>"; };
 		1FF592A52CC59BE20050CB70 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
-		1FF592A72CC658510050CB70 /* ToDoTaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskFilter.swift; sourceTree = "<group>"; };
+		1FF592A72CC658510050CB70 /* ToDoTaskFilteringOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskFilteringOption.swift; sourceTree = "<group>"; };
 		1FF592AA2CC679CB0050CB70 /* DataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidator.swift; sourceTree = "<group>"; };
 		1FF592AD2CC67CE00050CB70 /* DataValidatorErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidatorErrors.swift; sourceTree = "<group>"; };
 		1FF592B02CC67E5A0050CB70 /* ToDoTaskStorageErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskStorageErrors.swift; sourceTree = "<group>"; };
@@ -122,6 +128,51 @@
 			path = MockedServiceLocator;
 			sourceTree = "<group>";
 		};
+		1FE519AF2CCA560C001D3E67 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1FF5928D2CC539BC0050CB70 /* Base UI */,
+				1FF5928C2CC537060050CB70 /* Task List */,
+				1FF592952CC5545D0050CB70 /* Task Conten */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1FE519B02CCA5855001D3E67 /* Use Cases */ = {
+			isa = PBXGroup;
+			children = (
+				1FE519B12CCA587F001D3E67 /* SortTasksUseCase.swift */,
+				1FE519B82CCA6A17001D3E67 /* FilterTasksUseCase.swift */,
+			);
+			path = "Use Cases";
+			sourceTree = "<group>";
+		};
+		1FE519B32CCA6477001D3E67 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1FF5929D2CC554DF0050CB70 /* ToDoTask.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1FE519B42CCA6492001D3E67 /* Task Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1FF592A32CC595280050CB70 /* ToDoTaskStorage.swift */,
+				1FF592B02CC67E5A0050CB70 /* ToDoTaskStorageErrors.swift */,
+				1F7F308D2CC6D15D00C2B23F /* ToDoTaskStorageProtocol.swift */,
+			);
+			path = "Task Storage";
+			sourceTree = "<group>";
+		};
+		1FE519B52CCA64AA001D3E67 /* User Preferences Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1FE519B62CCA64E2001D3E67 /* UserPreferenciesStorage.swift */,
+			);
+			path = "User Preferences Storage";
+			sourceTree = "<group>";
+		};
 		1FF5928C2CC537060050CB70 /* Task List */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +217,8 @@
 		1FF5929C2CC554D50050CB70 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				1FF592AF2CC67E460050CB70 /* Storage */,
+				1FE519B32CCA6477001D3E67 /* Entity */,
+				1FF592AF2CC67E460050CB70 /* Storages */,
 				1FF592AC2CC67CD10050CB70 /* Data Validation */,
 				1FF592A92CC6707A0050CB70 /* Sorting and Filtering */,
 			);
@@ -176,8 +228,8 @@
 		1FF592A92CC6707A0050CB70 /* Sorting and Filtering */ = {
 			isa = PBXGroup;
 			children = (
-				1FF592A12CC56DC20050CB70 /* ToDoTaskSorter.swift */,
-				1FF592A72CC658510050CB70 /* ToDoTaskFilter.swift */,
+				1FF592A12CC56DC20050CB70 /* ToDoTaskSortingOption.swift */,
+				1FF592A72CC658510050CB70 /* ToDoTaskFilteringOption.swift */,
 			);
 			path = "Sorting and Filtering";
 			sourceTree = "<group>";
@@ -192,15 +244,13 @@
 			path = "Data Validation";
 			sourceTree = "<group>";
 		};
-		1FF592AF2CC67E460050CB70 /* Storage */ = {
+		1FF592AF2CC67E460050CB70 /* Storages */ = {
 			isa = PBXGroup;
 			children = (
-				1FF5929D2CC554DF0050CB70 /* ToDoTask.swift */,
-				1FF592A32CC595280050CB70 /* ToDoTaskStorage.swift */,
-				1FF592B02CC67E5A0050CB70 /* ToDoTaskStorageErrors.swift */,
-				1F7F308D2CC6D15D00C2B23F /* ToDoTaskStorageProtocol.swift */,
+				1FE519B52CCA64AA001D3E67 /* User Preferences Storage */,
+				1FE519B42CCA6492001D3E67 /* Task Storage */,
 			);
-			path = Storage;
+			path = Storages;
 			sourceTree = "<group>";
 		};
 		1FFCBC102CC5336400453AD7 = {
@@ -225,9 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				1F7F308C2CC6D13100C2B23F /* ServiceLocator */,
-				1FF5928D2CC539BC0050CB70 /* Base UI */,
-				1FF5928C2CC537060050CB70 /* Task List */,
-				1FF592952CC5545D0050CB70 /* Task Conten */,
+				1FE519AF2CCA560C001D3E67 /* UI */,
+				1FE519B02CCA5855001D3E67 /* Use Cases */,
 				1FF5929C2CC554D50050CB70 /* Data */,
 				1FF592922CC53FD00050CB70 /* Others */,
 			);
@@ -346,9 +395,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FF592892CC5354B0050CB70 /* BaseViewController.swift in Sources */,
-				1FF592A22CC56DC20050CB70 /* ToDoTaskSorter.swift in Sources */,
+				1FF592A22CC56DC20050CB70 /* ToDoTaskSortingOption.swift in Sources */,
 				1FF592A02CC55C230050CB70 /* BaseNavigationView.swift in Sources */,
-				1FF592A82CC658510050CB70 /* ToDoTaskFilter.swift in Sources */,
+				1FF592A82CC658510050CB70 /* ToDoTaskFilteringOption.swift in Sources */,
 				1F7F308E2CC6D15D00C2B23F /* ToDoTaskStorageProtocol.swift in Sources */,
 				1FF5929B2CC554C60050CB70 /* TaskContentViewModel.swift in Sources */,
 				1FF5929E2CC554DF0050CB70 /* ToDoTask.swift in Sources */,
@@ -357,13 +406,16 @@
 				1FFCBC1D2CC5336400453AD7 /* AppDelegate.swift in Sources */,
 				1FF592B12CC67E5A0050CB70 /* ToDoTaskStorageErrors.swift in Sources */,
 				1FF592992CC554950050CB70 /* TaskContentView.swift in Sources */,
+				1FE519B22CCA587F001D3E67 /* SortTasksUseCase.swift in Sources */,
 				1F7F30912CC6D17000C2B23F /* DataValidatorProtocol.swift in Sources */,
 				1FF592A42CC595280050CB70 /* ToDoTaskStorage.swift in Sources */,
 				1FF592912CC53A0B0050CB70 /* TaskListView.swift in Sources */,
 				1FF5928F2CC539DD0050CB70 /* TaskListViewController.swift in Sources */,
 				1FF592942CC541390050CB70 /* TaskListViewModel.swift in Sources */,
 				1FF592AB2CC679CB0050CB70 /* DataValidator.swift in Sources */,
+				1FE519B72CCA64E2001D3E67 /* UserPreferenciesStorage.swift in Sources */,
 				1FF592972CC554730050CB70 /* TaskContentViewController.swift in Sources */,
+				1FE519B92CCA6A17001D3E67 /* FilterTasksUseCase.swift in Sources */,
 				1FF592AE2CC67CE00050CB70 /* DataValidatorErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

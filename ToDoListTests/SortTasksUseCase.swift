@@ -1,20 +1,29 @@
 //
-//  ToDoTaskSorter.swift
+//  SortTasksUseCase.swift
 //  ToDoList
 //
-//  Created by Vladislav Smelov on 10/20/24.
+//  Created by Vladislav Smelov on 10/24/24.
 //
 
 import Foundation
 
-enum ToDoTaskSorter: Int, CaseIterable {
-    case name
-    case dueDate
-    case priority
+final class SortTasksUseCase {
+    private var sortingOption: ToDoTaskSortingOption
+    private var tasks: [ToDoTask]
 
-    func sort(tasks: [ToDoTask]) -> [ToDoTask] {
+    init(tasks: [ToDoTask], sortingOption: ToDoTaskSortingOption) {
+        self.tasks = tasks
+        self.sortingOption = sortingOption
+    }
+
+    func execute() -> [ToDoTask] {
+        saveLastUsedOption()
+        return sort()
+    }
+
+    private func sort() -> [ToDoTask] {
         var result: [ToDoTask]
-        switch self {
+        switch sortingOption {
         case .name:
             result = NameTaskSorter().sort(tasks: tasks)
         case .dueDate:
@@ -25,20 +34,12 @@ enum ToDoTaskSorter: Int, CaseIterable {
         return result
     }
 
-    var userFriendlyName: String {
-        var result = ""
-        switch self {
-        case .name:
-            result = "By Name"
-        case .dueDate:
-            result = "By Due Date"
-        case .priority:
-            result = "By Priority"
-        }
-        return result
+    private func saveLastUsedOption() {
+        ServiceLocator.shared.userPreferences.save(sortingOption: sortingOption)
     }
 }
 
+// MARK: - Sorters
 protocol TaskSorterProtocol {
     var ascending: Bool { get }
     init(ascending: Bool)
