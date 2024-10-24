@@ -17,5 +17,6 @@ final class AddTaskUseCase {
 
     func execute() throws {
         try ServiceLocator.shared.storage.add(task: taskToBeAdded)
+        try ServiceLocator.shared.localNotificationsStorage.schedule(from: taskToBeAdded)
     }
 }

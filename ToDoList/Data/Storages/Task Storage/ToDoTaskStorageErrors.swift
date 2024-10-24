@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum ToDoTaskStorageErrors: Error, LocalizedError {
     case noTaskInStorage(ToDoTask)
     case emptyStorage

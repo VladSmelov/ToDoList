@@ -13,14 +13,17 @@ final class ServiceLocator {
     private(set) var storage: ToDoTaskStorageProtocol
     private(set) var dataValidator: DataValidatorProtocol
     private(set) var userPreferences: UserPreferencesStorageProtocol
+    private(set) var localNotificationsStorage: LocalNotificationsStorageProtocol
 
     init(
         storage: some ToDoTaskStorageProtocol = ToDoTaskStorage(),
         dataValidator: some DataValidatorProtocol = DataValidator(),
-        userPreferences: some UserPreferencesStorageProtocol = UserPreferencesStorage()
+        userPreferences: some UserPreferencesStorageProtocol = UserPreferencesStorage(),
+        localNotificationsStorage: some LocalNotificationsStorageProtocol = LocalNotificationsStorage()
     ) {
         self.storage = storage
         self.dataValidator = dataValidator
         self.userPreferences = userPreferences
+        self.localNotificationsStorage = localNotificationsStorage
     }
 }

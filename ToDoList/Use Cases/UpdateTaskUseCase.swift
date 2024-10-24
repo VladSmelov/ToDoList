@@ -16,5 +16,6 @@ final class UpdateTaskUseCase {
 
     func execute() throws {
         try ServiceLocator.shared.storage.update(task: taskToBeUpdated)
+        try ServiceLocator.shared.localNotificationsStorage.update(for: taskToBeUpdated)
     }
 }

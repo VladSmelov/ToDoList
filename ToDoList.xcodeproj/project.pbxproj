@@ -22,6 +22,10 @@
 		1FE519C12CCA730B001D3E67 /* AddTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519C02CCA730B001D3E67 /* AddTaskUseCase.swift */; };
 		1FE519C32CCA73CA001D3E67 /* UpdateTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519C22CCA73CA001D3E67 /* UpdateTaskUseCase.swift */; };
 		1FE519C52CCA763F001D3E67 /* MockedUserPreferencesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519C42CCA763F001D3E67 /* MockedUserPreferencesStorage.swift */; };
+		1FE519C82CCA7762001D3E67 /* LocalNotificationsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519C72CCA7762001D3E67 /* LocalNotificationsStorage.swift */; };
+		1FE519CA2CCA7A27001D3E67 /* LocalNotificationsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519C92CCA7A27001D3E67 /* LocalNotificationsStorageProtocol.swift */; };
+		1FE519CC2CCA7A3F001D3E67 /* MockLocalNotificationsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519CB2CCA7A3F001D3E67 /* MockLocalNotificationsStorage.swift */; };
+		1FE519CE2CCA7BE3001D3E67 /* LocalNotificationsStorageErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE519CD2CCA7BE3001D3E67 /* LocalNotificationsStorageErrors.swift */; };
 		1FF592892CC5354B0050CB70 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF592882CC5354B0050CB70 /* BaseViewController.swift */; };
 		1FF5928B2CC535DF0050CB70 /* SwiftUIHostingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5928A2CC535DF0050CB70 /* SwiftUIHostingProtocol.swift */; };
 		1FF5928F2CC539DD0050CB70 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5928E2CC539DD0050CB70 /* TaskListViewController.swift */; };
@@ -71,6 +75,10 @@
 		1FE519C02CCA730B001D3E67 /* AddTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskUseCase.swift; sourceTree = "<group>"; };
 		1FE519C22CCA73CA001D3E67 /* UpdateTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskUseCase.swift; sourceTree = "<group>"; };
 		1FE519C42CCA763F001D3E67 /* MockedUserPreferencesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedUserPreferencesStorage.swift; sourceTree = "<group>"; };
+		1FE519C72CCA7762001D3E67 /* LocalNotificationsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsStorage.swift; sourceTree = "<group>"; };
+		1FE519C92CCA7A27001D3E67 /* LocalNotificationsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsStorageProtocol.swift; sourceTree = "<group>"; };
+		1FE519CB2CCA7A3F001D3E67 /* MockLocalNotificationsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocalNotificationsStorage.swift; sourceTree = "<group>"; };
+		1FE519CD2CCA7BE3001D3E67 /* LocalNotificationsStorageErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsStorageErrors.swift; sourceTree = "<group>"; };
 		1FF592882CC5354B0050CB70 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1FF5928A2CC535DF0050CB70 /* SwiftUIHostingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIHostingProtocol.swift; sourceTree = "<group>"; };
 		1FF5928E2CC539DD0050CB70 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 				1F7F30952CC6D39100C2B23F /* MockedToDoTaskStorage.swift */,
 				1F7F30972CC6D3CD00C2B23F /* MockDataValidator.swift */,
 				1FE519C42CCA763F001D3E67 /* MockedUserPreferencesStorage.swift */,
+				1FE519CB2CCA7A3F001D3E67 /* MockLocalNotificationsStorage.swift */,
 			);
 			path = MockedServiceLocator;
 			sourceTree = "<group>";
@@ -189,6 +198,16 @@
 				1FE519BE2CCA7257001D3E67 /* UserPreferencesStorageProtocol.swift */,
 			);
 			path = "User Preferences Storage";
+			sourceTree = "<group>";
+		};
+		1FE519C62CCA7742001D3E67 /* Local Notifications Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1FE519C72CCA7762001D3E67 /* LocalNotificationsStorage.swift */,
+				1FE519C92CCA7A27001D3E67 /* LocalNotificationsStorageProtocol.swift */,
+				1FE519CD2CCA7BE3001D3E67 /* LocalNotificationsStorageErrors.swift */,
+			);
+			path = "Local Notifications Storage";
 			sourceTree = "<group>";
 		};
 		1FF5928C2CC537060050CB70 /* Task List */ = {
@@ -265,6 +284,7 @@
 		1FF592AF2CC67E460050CB70 /* Storages */ = {
 			isa = PBXGroup;
 			children = (
+				1FE519C62CCA7742001D3E67 /* Local Notifications Storage */,
 				1FE519B52CCA64AA001D3E67 /* User Preferences Storage */,
 				1FE519B42CCA6492001D3E67 /* Task Storage */,
 			);
@@ -405,6 +425,7 @@
 				1F7F30982CC6D3CD00C2B23F /* MockDataValidator.swift in Sources */,
 				1FE519C52CCA763F001D3E67 /* MockedUserPreferencesStorage.swift in Sources */,
 				1F7F30842CC6CF4200C2B23F /* TaskListViewModelTests.swift in Sources */,
+				1FE519CC2CCA7A3F001D3E67 /* MockLocalNotificationsStorage.swift in Sources */,
 				1F7F309D2CC6E30E00C2B23F /* ToDoTaskStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +450,7 @@
 				1FE519BB2CCA6C33001D3E67 /* FetchTasksUseCase.swift in Sources */,
 				1FF592992CC554950050CB70 /* TaskContentView.swift in Sources */,
 				1FE519B22CCA587F001D3E67 /* SortTasksUseCase.swift in Sources */,
+				1FE519CA2CCA7A27001D3E67 /* LocalNotificationsStorageProtocol.swift in Sources */,
 				1FE519C12CCA730B001D3E67 /* AddTaskUseCase.swift in Sources */,
 				1F7F30912CC6D17000C2B23F /* DataValidatorProtocol.swift in Sources */,
 				1FF592A42CC595280050CB70 /* ToDoTaskStorage.swift in Sources */,
@@ -438,7 +460,9 @@
 				1FF592942CC541390050CB70 /* TaskListViewModel.swift in Sources */,
 				1FF592AB2CC679CB0050CB70 /* DataValidator.swift in Sources */,
 				1FE519B72CCA64E2001D3E67 /* UserPreferenciesStorage.swift in Sources */,
+				1FE519C82CCA7762001D3E67 /* LocalNotificationsStorage.swift in Sources */,
 				1FF592972CC554730050CB70 /* TaskContentViewController.swift in Sources */,
+				1FE519CE2CCA7BE3001D3E67 /* LocalNotificationsStorageErrors.swift in Sources */,
 				1FE519B92CCA6A17001D3E67 /* FilterTasksUseCase.swift in Sources */,
 				1FF592AE2CC67CE00050CB70 /* DataValidatorErrors.swift in Sources */,
 			);
