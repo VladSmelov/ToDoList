@@ -22,7 +22,9 @@ final class TaskListViewModelTests: XCTestCase {
     let mockedStorage = MockedToDoTaskStorage()
 
     override func setUp() {
-        ServiceLocator.shared = .init(storage: mockedStorage)
+        ServiceLocator.shared = .init(
+            storage: mockedStorage,
+            userPreferences: MockedUserPreferencesStorage())
         mockedStorage.mockedFetchResult = mockedTaskList
     }
 

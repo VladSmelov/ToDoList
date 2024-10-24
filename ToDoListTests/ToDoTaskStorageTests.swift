@@ -32,7 +32,7 @@ final class ToDoTaskStorageTests: XCTestCase {
         do {
             let taskToAdd = ToDoTask(name: "", priority: .unknown, dueDate: .now)
             try storage.add(task: taskToAdd)
-            let updatedList = try storage.fetchTasks()
+            _ = try storage.fetchTasks()
             XCTFail("Error should be thrown")
         } catch {
             XCTAssertFalse(error.localizedDescription.isEmpty)
@@ -64,7 +64,7 @@ final class ToDoTaskStorageTests: XCTestCase {
 
     func testUpdateFailed_noTaskInStorage() {
         do {
-            var taskToUpdate = ToDoTask(name: "0", priority: .low, dueDate: .now)
+            let taskToUpdate = ToDoTask(name: "0", priority: .low, dueDate: .now)
             try storage.update(task: taskToUpdate)
             XCTFail("Error should be thrown")
         } catch {
@@ -82,7 +82,7 @@ final class ToDoTaskStorageTests: XCTestCase {
 
     func testDeleteTaskFailed_noTaskInStorage() {
         do {
-            var taskToDelete = ToDoTask(name: "0", priority: .low, dueDate: .now)
+            let taskToDelete = ToDoTask(name: "0", priority: .low, dueDate: .now)
             try storage.delete(task: taskToDelete)
             XCTFail("Error should be thrown")
         } catch {
