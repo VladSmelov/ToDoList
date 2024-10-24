@@ -61,9 +61,9 @@ private extension TaskContentViewModel {
         do {
             switch viewMode {
             case .addTask:
-                try ServiceLocator.shared.storage.add(task: task)
+                try AddTaskUseCase(taskToBeAdded: task).execute()
             case .edit:
-                try ServiceLocator.shared.storage.update(task: task)
+                try UpdateTaskUseCase(taskToBeUpdated: task).execute()
             default:
                 break
             }

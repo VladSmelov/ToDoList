@@ -7,13 +7,6 @@
 
 import Foundation
 
-protocol UserPreferencesStorageProtocol {
-    func save(sortingOption: ToDoTaskSortingOption)
-    func readSortingOption() -> ToDoTaskSortingOption
-    func save(filteringOption: ToDoTaskFilteringOption)
-    func readFilteringOption() -> ToDoTaskFilteringOption
-}
-
 final class UserPreferencesStorage: UserPreferencesStorageProtocol {
     func save(sortingOption: ToDoTaskSortingOption) {
         UserDefaults.standard.set(sortingOption.rawValue, forKey: Keys.sortingOption.rawValue)

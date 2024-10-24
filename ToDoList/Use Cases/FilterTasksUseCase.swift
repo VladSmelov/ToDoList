@@ -20,12 +20,14 @@ final class FilterTasksUseCase {
         saveLastUsedOption()
         return filter()
     }
+}
 
-    private func saveLastUsedOption() {
+private extension FilterTasksUseCase {
+    func saveLastUsedOption() {
         ServiceLocator.shared.userPreferences.save(filteringOption: filteringOption)
     }
 
-    private func filter() -> [ToDoTask] {
+    func filter() -> [ToDoTask] {
         var result: [ToDoTask]
         switch filteringOption {
         case .priority(let priority):

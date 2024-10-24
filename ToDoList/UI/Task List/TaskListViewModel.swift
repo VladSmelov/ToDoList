@@ -46,8 +46,11 @@ extension TaskListViewModel {
 extension TaskListViewModel {
     func fetchTasks() {
         do {
-            let newList = try ServiceLocator.shared.storage.fetchTasks()
-            update(tasks: newList)
+            let fetchUseCase = FetchTasksUseCase()
+            let newList = try fetchUseCase.execute()
+
+            tasks = newList.allTasks
+            tasksToDisplay = newList.tasksToDisplay
         } catch {
             errorText = error.localizedDescription
         }
@@ -57,16 +60,11 @@ extension TaskListViewModel {
         let index = offsets[offsets.startIndex]
         let taskToDelete = tasksToDisplay[index]
         do {
-            try ServiceLocator.shared.storage.delete(task: taskToDelete)
+            try DeleteTaskUseCase(taskToDelete: taskToDelete).execute()
             fetchTasks()
         } catch {
             errorText = error.localizedDescription
         }
-    }
-
-    private func update(tasks newTasks: [ToDoTask]) {
-        tasks = newTasks
-        tasksToDisplay = tasks
     }
 }
 

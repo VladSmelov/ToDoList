@@ -20,8 +20,10 @@ final class SortTasksUseCase {
         saveLastUsedOption()
         return sort()
     }
+}
 
-    private func sort() -> [ToDoTask] {
+private extension SortTasksUseCase {
+    func sort() -> [ToDoTask] {
         var result: [ToDoTask]
         switch sortingOption {
         case .name:
@@ -34,7 +36,7 @@ final class SortTasksUseCase {
         return result
     }
 
-    private func saveLastUsedOption() {
+    func saveLastUsedOption() {
         ServiceLocator.shared.userPreferences.save(sortingOption: sortingOption)
     }
 }
