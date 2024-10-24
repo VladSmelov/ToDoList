@@ -23,11 +23,22 @@ class TaskListViewModel: ObservableObject {
 extension TaskListViewModel {
     func run(action: Action) {
         self.action = action
+        
+        switch action {
+        case .sortBy(let sortingOption):
+            sort(by: sortingOption)
+        case .filterBy(let filteringOption):
+            filter(by: filteringOption)
+        default:
+            break
+        }
     }
 
     enum Action {
         case addTask
         case view(task: ToDoTask)
+        case sortBy(_ sortingOption: ToDoTaskSorter)
+        case filterBy(_ filteringOption: ToDoTaskFilter)
     }
 }
 
@@ -64,8 +75,8 @@ extension TaskListViewModel {
     var allSortingOptions: [ToDoTaskSorter] {
         ToDoTaskSorter.allCases
     }
-    // TODO: Make private, call with using Action
-    func sort(by sortingOption: ToDoTaskSorter) {
+
+    private func sort(by sortingOption: ToDoTaskSorter) {
         tasksToDisplay = sortingOption.sort(tasks: tasksToDisplay)
     }
 }
@@ -75,8 +86,8 @@ extension TaskListViewModel {
     var allFilteringOptions: [ToDoTaskFilter] {
         ToDoTaskFilter.allCases
     }
-    // TODO: Make private, call with using Action
-    func filter(by filteringOption: ToDoTaskFilter) {
+
+    private func filter(by filteringOption: ToDoTaskFilter) {
         tasksToDisplay = filteringOption.filter(tasks: tasks)
     }
 }

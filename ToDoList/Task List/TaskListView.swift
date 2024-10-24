@@ -69,7 +69,7 @@ private extension TaskListView {
         var options = viewModel.allSortingOptions.map { option in
             ActionSheet.Button
                 .default(Text(option.userFriendlyName)) {
-                    viewModel.sort(by: option)
+                    viewModel.run(action: .sortBy(option))
                 }
         }
         options.append(ActionSheet.Button.cancel())
@@ -91,7 +91,7 @@ private extension TaskListView {
         var options = viewModel.allFilteringOptions.map { option in
             ActionSheet.Button
                 .default(Text(option.userFriendlyName)) {
-                    viewModel.filter(by: option)
+                    viewModel.run(action: .filterBy(option))
                 }
         }
         options.append(ActionSheet.Button.cancel())
