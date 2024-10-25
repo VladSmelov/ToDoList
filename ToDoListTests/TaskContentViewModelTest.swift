@@ -29,17 +29,17 @@ final class TaskContentViewModelTest: XCTestCase {
     }
 
     func testSwitchViewMode() {
-        var taskToEdit = ToDoTask(name: "Temp", priority: .low, dueDate: date)
+        let taskToEdit = ToDoTask(name: "Temp", priority: .low, dueDate: date)
         viewModel = .init(viewMode: .view(task: taskToEdit))
 
-        if case let .view(taskToEdit) = viewModel.viewMode {
+        if case .view(_) = viewModel.viewMode {
             XCTAssert(true)
         } else {
             XCTFail()
         }
 
         viewModel.run(action: .edit)
-        if case let .edit(taskToEdit) = viewModel.viewMode {
+        if case .edit(_) = viewModel.viewMode {
             XCTAssert(true)
         } else {
             XCTFail()
@@ -61,11 +61,11 @@ final class TaskContentViewModelTest: XCTestCase {
     }
 
     func testEditChangesSuccess() {
-        var taskToEdit = ToDoTask(name: "Temp", priority: .low, dueDate: date)
+        let taskToEdit = ToDoTask(name: "Temp", priority: .low, dueDate: date)
         viewModel = .init(viewMode: .view(task: taskToEdit))
 
         viewModel.run(action: .edit)
-        if case let .edit(taskToEdit) = viewModel.viewMode {
+        if case .edit(taskToEdit) = viewModel.viewMode {
             XCTAssert(true)
         } else {
             XCTFail()
