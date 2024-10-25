@@ -22,6 +22,9 @@ final class UserPreferencesStorage: UserPreferencesStorageProtocol {
     }
 
     func readFilteringOption() -> ToDoTaskFilteringOption {
+        guard UserDefaults.standard.value(forKey: Keys.filteringOption.rawValue) != nil else {
+            return .none
+        }
         let option = UserDefaults.standard.integer(forKey: Keys.filteringOption.rawValue)
         return ToDoTaskFilteringOption(caseNumber: option)
     }
